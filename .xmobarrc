@@ -1,0 +1,13 @@
+Config { font = "xft:Roboto Mono:size=8:bold:antialias=true"
+       , bgColor = "#000000"
+       , fgColor = "#FFFFFF"
+       , position = Top
+       , lowerOnStart = True
+       , commands = [ 
+                     Run Date "%A, %d %b %Y <fc=#a046e3>%H:%M:%S</fc>" "date" 10
+                     , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %date%"
+       }
