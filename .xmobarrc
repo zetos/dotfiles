@@ -1,13 +1,28 @@
-Config { font = "xft:Roboto Mono:size=8:bold:antialias=true"
+Config { font = "xft:Fira Code:size=8:bold:antialias=true"
+       , additionalFonts = ["xft:Iosevka :style=Regular:size=5"]
        , bgColor = "#000000"
        , fgColor = "#FFFFFF"
+       , border           = BottomB
+       , borderWidth      = 0
+       , borderColor      = "#c0c5ce"
        , position = Top
        , lowerOnStart = True
        , commands = [ 
                      Run Date "%A, %d %b %Y <fc=#a046e3>%H:%M:%S</fc>" "date" 10
+                     , Run Kbd      [ ("br", "<fc=#FFFFFF>BR</fc>"), ("us", "<fc=#FFFFFF>US</fc>")]
+                     , Run MultiCpu [ "--template" , "<fc=white><fn=1>CPU </fn></fc><fc=white></fc><total>%"
+                                                , "--Low"      , "50"        -- units: %
+                                                , "--High"     , "85"        -- units: %
+                                                , "--low"      , "#ffffff"
+                                                , "--normal"   , "#ffffff"
+                                                , "--high"     , "#fd0537"
+                                                ] 10
+                     , Run Network "enp0s3" ["-t", "<fn=1>down</fn> <rx>kb <fn=1>up</fn> <tx>kb"] 20
+                     , Run Memory   [ "--template" ,"<fc=white><fn=1>RAM </fn></fc><fc=white></fc><usedratio>%"] 10
+                     -- , Run Com "/bin/bash" ["-c", "XMgetvolume"]  "XVol" 10
                      , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %date%"
+       , template = "%StdinReader% }{ <fn=1>layout</fn> %kbd% | %enp0s3% | %multicpu% | %memory% | %date% "
        }
