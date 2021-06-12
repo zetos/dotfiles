@@ -57,10 +57,27 @@ sexyPurple = "#a046e3"
 bloodRed = "#8a0303"
 neonGreen= "#39ff14"
 
+nord0 = "#2E3440"
+nord1 = "#3B4252"
+nord2 = "#434C5E"
+nord3 = "#4C566A"
+
+nord4 = "#D8DEE9"
+nord5 = "#E5E9F0"
+nord6 = "#ECEFF4"
+
+
+nord9 = "#81A1C1"
+nord10 = "#5E81AC"
+
+nord11 = "#BF616A"
+nord13 ="#EBCB8B"
+
+
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = sexyPurple
+myNormalBorderColor  = nord0
+myFocusedBorderColor = nord2
 
 
 ------------------------------------------------------------------------
@@ -259,11 +276,11 @@ myStartupHook = return ()
 myBar= "xmobar"
 
 -- CustomPP, it determines what it being written in the bar.
-myPP = xmobarPP { ppCurrent = xmobarColor sexyPurple "#000000" . wrap "<" ">"
-                , ppTitle = shorten 80
-                , ppSep = "<fc=#a046e3> | </fc>"
-                , ppHiddenNoWindows = xmobarColor "#777777" ""
-                , ppUrgent = xmobarColor "#AFAFAF" "#333333" . wrap "!" ""
+myPP = xmobarPP { ppCurrent = xmobarColor nord4 nord2 . wrap "[" "]"
+                , ppTitle = shorten 60
+                , ppSep = "<fc=#4C566A> | </fc>"
+                , ppHiddenNoWindows = xmobarColor nord10 ""
+                , ppUrgent = xmobarColor nord11 "" . wrap "!" ""
                  }
 
 -- Toggle the gap for the bar.

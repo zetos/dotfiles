@@ -1,28 +1,29 @@
 Config { font = "xft:Fira Code:size=8:bold:antialias=true"
        , additionalFonts = ["xft:Iosevka :style=Regular:size=5"]
-       , bgColor = "#000000"
-       , fgColor = "#FFFFFF"
+       , bgColor = "#2E3440"
+       , fgColor = "#D8DEE9"
        , border           = BottomB
        , borderWidth      = 0
-       , borderColor      = "#c0c5ce"
+       , borderColor      = "#5E81AC"
        , position = Top
        , lowerOnStart = True
        , commands = [ 
-                     Run Date "%A, %d %b %Y <fc=#a046e3>%H:%M:%S</fc>" "date" 10
-                     , Run Kbd      [ ("br", "<fc=#FFFFFF>BR</fc>"), ("us", "<fc=#FFFFFF>US</fc>")]
-                     , Run MultiCpu [ "--template" , "<fc=white><fn=1>CPU </fn></fc><fc=white></fc><total>%"
+                     Run Date "%A, %d %b %Y <fc=#81A1C1>%H:%M:%S</fc>" "date" 10
+                     , Run Kbd      [ ("br", "BR"), ("us", "<fc=#EBCB8B>US</fc>")]
+                     , Run MultiCpu [ "--template" , "<fn=1>CPU </fn><total>%"
                                                 , "--Low"      , "50"        -- units: %
                                                 , "--High"     , "85"        -- units: %
-                                                , "--low"      , "#ffffff"
-                                                , "--normal"   , "#ffffff"
-                                                , "--high"     , "#fd0537"
+                                                , "--low"      , "#ECEFF4"
+                                                , "--normal"   , "#ECEFF4"
+                                                , "--high"     , "#BF616A"
                                                 ] 10
                      , Run Network "enp0s3" ["-t", "<fn=1>down</fn> <rx>kb <fn=1>up</fn> <tx>kb"] 20
-                     , Run Memory   [ "--template" ,"<fc=white><fn=1>RAM </fn></fc><fc=white></fc><usedratio>%"] 10
+                     , Run Memory   [ "--template" ,"<fn=1>RAM </fn><usedratio>%"] 10
                      -- , Run Com "/bin/bash" ["-c", "XMgetvolume"]  "XVol" 10
+                     , Run Com "pamixer" ["--get-volume"]  "vol" 20
                      , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ <fn=1>layout</fn> %kbd% | %enp0s3% | %multicpu% | %memory% | %date% "
+       , template = "%StdinReader% }{ <fn=1>layout</fn> %kbd% <fc=#4C566A>|</fc> %enp0s3% <fc=#4C566A>|</fc> %multicpu% <fc=#4C566A>|</fc> %memory% <fc=#4C566A>|</fc> <fn=1>vol</fn> %vol% <fc=#4C566A>|</fc> %date% "
        }
