@@ -10,20 +10,36 @@ Config { font = "xft:Fira Code:size=8:bold:antialias=true"
        , commands = [ 
                      Run Date "%A, %d %b %Y <fc=#81A1C1>%H:%M:%S</fc>" "date" 10
                      , Run Kbd      [ ("br", "BR"), ("us", "<fc=#EBCB8B>US</fc>")]
-                     , Run MultiCpu [ "--template" , "<fn=1>CPU </fn><total>%"
+                     , Run MultiCpu [ "--template" , "<fn=1>CPU</fn> <total>%"
                                                 , "--Low"      , "50"        -- units: %
                                                 , "--High"     , "85"        -- units: %
                                                 , "--low"      , "#ECEFF4"
                                                 , "--normal"   , "#ECEFF4"
                                                 , "--high"     , "#BF616A"
                                                 ] 10
-                     , Run Network "enp0s3" ["-t", "<fn=1>down</fn> <rx>kb <fn=1>up</fn> <tx>kb"] 20
-                     , Run Memory   [ "--template" ,"<fn=1>RAM </fn><usedratio>%"] 10
-                     -- , Run Com "/bin/bash" ["-c", "XMgetvolume"]  "XVol" 10
+                     -- , Run Network "enp2s0" ["-t", "<fn=1>down</fn> <rx>kb <fn=1>up</fn> <tx>kb"] 20
+                     , Run DynNetwork ["-t", "<fn=1>down</fn> <rx>kb <fn=1>up</fn> <tx>kb"] 20
+                     , Run Wireless "wlp3s0" ["-t", "<fn=1>wifi</fn> <essid> <fn=1>quality</fn> <qualityvbar>"] 20
+                     , Run Memory   [ "--template" ,"<fn=1>RAM</fn> <usedratio>%"] 10
+                     , Run Battery        [ "--template" , "<fn=1>Batery</fn> <acstatus>"
+                             , "--Low"      , "10"        -- units: %
+                             , "--High"     , "80"        -- units: %
+                             , "--low"      , "#BF616A"
+                             , "--normal"   , "#ECEFF4"
+                             , "--high"     , "#ECEFF4"
+
+                             , "--" -- battery specific options
+                                       -- discharging status
+                                       , "-o"	, "<left>% <fn=1>[<timeleft>]</fn>"
+                                       -- AC "on" status
+                                       , "-O"	, "<fc=#EBCB8B>Charging</fc>"
+                                       -- charged status
+                                       , "-i"	, "<fc=#A3BE8C>Charged</fc>"
+                             ] 50
                      , Run Com "pamixer" ["--get-volume"]  "vol" 20
                      , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ <fn=1>layout</fn> %kbd% <fc=#4C566A>|</fc> %enp0s3% <fc=#4C566A>|</fc> %multicpu% <fc=#4C566A>|</fc> %memory% <fc=#4C566A>|</fc> <fn=1>vol</fn> %vol% <fc=#4C566A>|</fc> %date% "
+       , template = "%StdinReader% }{ <fn=1>layout</fn> %kbd% <fc=#4C566A>|</fc> %dynnetwork% <fc=#4C566A>|</fc> %wlp3s0wi% <fc=#4C566A>|</fc> %multicpu% <fc=#4C566A>|</fc> %memory% <fc=#4C566A>|</fc> <fn=1>vol</fn> %vol% <fc=#4C566A>|</fc> %battery% <fc=#4C566A>|</fc> %date% "
        }
