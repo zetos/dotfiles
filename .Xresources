@@ -7,6 +7,10 @@ XTerm*renderFont: true
 
 !--- URxvt Settings ---
 
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 URxvt.font: xft:Fira Code:size=8
 URxvt.scrollBar: false
 !URxvt*transparent: true
