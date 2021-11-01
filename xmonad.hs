@@ -31,7 +31,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 2
+myBorderWidth   = 5
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -49,7 +49,7 @@ myModMask       = mod1Mask
 --
 -- > workspaces = ["www", "code", "etc" ] ++ map show [4..9]
 --
-myWorkspaces    = ["1:www", "2:dev", "3:term", "4:etc"]
+myWorkspaces    = ["1:www", "2:code", "3:term", "4:etc"]
 
 -- Colors
 --
@@ -66,7 +66,6 @@ nord4 = "#D8DEE9"
 nord5 = "#E5E9F0"
 nord6 = "#ECEFF4"
 
-
 nord9 = "#81A1C1"
 nord10 = "#5E81AC"
 
@@ -77,7 +76,7 @@ nord13 ="#EBCB8B"
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = nord0
-myFocusedBorderColor = nord2
+myFocusedBorderColor = nord10
 
 
 ------------------------------------------------------------------------
@@ -195,7 +194,6 @@ myMouseBindings XConfig {XMonad.modMask = modm} = M.fromList
 
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
     ]
-
 ------------------------------------------------------------------------
 -- Layouts:
 
@@ -216,7 +214,7 @@ myLayout = tiled ||| Mirror tiled ||| Full
      nmaster = 1
 
      -- Default proportion of screen occupied by master pane
-     ratio   = 1/2
+     ratio   = 1/1.5
 
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
