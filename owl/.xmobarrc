@@ -1,0 +1,29 @@
+Config { font = "xft:Fira Code:size=8:bold:antialias=true"
+       , additionalFonts = ["xft:Iosevka :style=Regular:size=5"]
+       , bgColor = "#011627"
+       , fgColor = "#d6deeb"
+       , border           = BottomB
+       , borderWidth      = 0
+       , borderColor      = "#102a44"
+       , position = Top
+       , lowerOnStart = True
+       , commands = [ 
+                     Run Date "%A, %d %b %Y <fc=#82aaff>%H:%M:%S</fc>" "date" 10
+                     , Run Kbd      [ ("br", "BR"), ("us", "<fc=#ffeb95>US</fc>")]
+                     , Run MultiCpu [ "--template" , "<fn=1>CPU </fn><total>%"
+                                                , "--Low"      , "50"        -- units: %
+                                                , "--High"     , "85"        -- units: %
+                                                , "--low"      , "#ECEFF4"
+                                                , "--normal"   , "#ECEFF4"
+                                                , "--high"     , "#ef5350"
+                                                ] 10
+                     , Run Network "enp0s3" ["-t", "<fn=1>down</fn> <rx>kb <fn=1>up</fn> <tx>kb"] 20
+                     , Run Memory   [ "--template" ,"<fn=1>RAM </fn><usedratio>%"] 10
+                     -- , Run Com "/bin/bash" ["-c", "XMgetvolume"]  "XVol" 10
+                     , Run Com "pamixer" ["--get-volume"]  "vol" 20
+                     , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ <fn=1>layout</fn> %kbd% <fc=#c792ea>|</fc> %enp0s3% <fc=#c792ea>|</fc> %multicpu% <fc=#c792ea>|</fc> %memory% <fc=#c792ea>|</fc> <fn=1>vol</fn> %vol% <fc=#c792ea>|</fc> %date% "
+       }

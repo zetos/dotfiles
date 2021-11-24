@@ -1,0 +1,59 @@
+!--- Xterm Settings ---
+XTerm.termName: xterm-256color
+
+XTerm*faceName: Fira Code
+XTerm*faceSize: 10
+XTerm*renderFont: true
+
+!--- URxvt Settings ---
+
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.font: xft:Fira Code:size=8
+URxvt.scrollBar: false
+!*.internalBorder: 10
+
+!URxvt*transparent: true
+!shading: 0 to 99 darkens, 101 to 200 lightens
+!URxvt*shading: 110
+
+!--- Night Owl ---
+
+! special
+*.foreground:   #d6deeb
+*.background:   #011627
+*.cursorColor:  #d6deeb
+
+! black
+*.color0:       #011627
+*.color8:       #575656
+
+! red
+*.color1:       #ef5350
+*.color9:       #ef5350
+
+! green
+*.color2:       #22da6e
+*.color10:      #22da6e
+
+! yellow
+*.color3:       #addb67
+*.color11:      #ffeb95
+
+! blue
+*.color4:       #82aaff
+*.color12:      #82aaff
+
+! magenta
+*.color5:       #c792ea
+*.color13:      #c792ea
+
+! cyan
+*.color6:       #21c7a8
+*.color14:      #7fdbca
+
+! white
+*.color7:       #ffffff
+*.color15:      #ffffff
