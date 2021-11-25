@@ -179,18 +179,16 @@ myKeys conf@XConfig {XMonad.modMask = modm} = M.fromList $
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
 --
-myMouseBindings XConfig {XMonad.modMask = modm} = M.fromList
+myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList
 
     -- mod-button1, Set the window to floating mode and move by dragging
-    [ ((modm, button1), (\w -> focus w >> mouseMoveWindow w
-                                       >> windows W.shiftMaster))
+    [ ((modm, button1), \w -> focus w >> mouseMoveWindow w >> windows W.shiftMaster)
 
     -- mod-button2, Raise the window to the top of the stack
-    , ((modm, button2), (\w -> focus w >> windows W.shiftMaster))
+    , ((modm, button2), \w -> focus w >> windows W.shiftMaster)
 
     -- mod-button3, Set the window to floating mode and resize by dragging
-    , ((modm, button3), (\w -> focus w >> mouseResizeWindow w
-                                       >> windows W.shiftMaster))
+    , ((modm, button3), \w -> focus w >> mouseResizeWindow w >> windows W.shiftMaster)
 
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
     ]
@@ -214,10 +212,10 @@ myLayout = tiled ||| Mirror tiled ||| Full
      nmaster = 1
 
      -- Default proportion of screen occupied by master pane
-     ratio   = 1/1.5
+     ratio   = 3/4
 
      -- Percent of screen to increment by when resizing panes
-     delta   = 3/100
+     delta   = 2/100
 
 ------------------------------------------------------------------------
 -- Window rules:
