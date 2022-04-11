@@ -54,42 +54,25 @@ myWorkspaces    = ["1:www", "2:dev", "3:term", "4:etc"]
 -- Colors
 --
 
---sexyPurple = "#a046e3"
---bloodRed = "#8a0303"
---neonGreen= "#39ff14"
-
-nord0 = "#2E3440"
 owlBg = "#011627"
 owlBgAlt = "#001122"
 owlBgAlt2 = "#000c1d"
 
---nord1 = "#3B4252"
-nord2 = "#434C5E"
 owlBlack = "#575656"
---nord3 = "#4C566A"
-
-nord4 = "#D8DEE9"
 owlForeground = "#d6deeb"
---nord5 = "#E5E9F0"
---nord6 = "#ECEFF4"
 
-
---nord9 = "#81A1C1"
-nord10 = "#5E81AC"
 owlBlue = "#82aaff"
 owlCyanLight = "#7fdbca"
 owlCyanDark = "#21c7a8"
+owlPink = "#c792ea"
 
-nord11 = "#BF616A"
 owlYellow = "#ffeb95"
-
---nord13 ="#EBCB8B"
 
 
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = owlBg
-myFocusedBorderColor = owlBlack
+myFocusedBorderColor = owlBlue
 
 
 ------------------------------------------------------------------------
@@ -288,10 +271,10 @@ myStartupHook = return ()
 myBar= "xmobar"
 
 -- CustomPP, it determines what it being written in the bar.
-myPP = xmobarPP { ppCurrent = xmobarColor owlBlue owlBgAlt2 . wrap "[" "]"
+myPP = xmobarPP { ppCurrent = xmobarColor owlBgAlt2 owlForeground . wrap "[" "]"
                 , ppTitle = shorten 60
                 , ppSep = "<fc=#c792ea> | </fc>"
-                , ppHiddenNoWindows = xmobarColor owlBlack ""
+                , ppHiddenNoWindows = xmobarColor owlBlue ""
                 , ppUrgent = xmobarColor owlYellow "" . wrap "!" ""
                  }
 
