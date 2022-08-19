@@ -1,5 +1,5 @@
-Config { font = "xft:Fira Code:size=8:bold:antialias=true"
-       , additionalFonts = ["xft:Iosevka :style=Regular:size=5"]
+Config { font = "xft:Iosevka:size=9:bold:antialias=true"
+       , additionalFonts = ["xft:Fira Code :style=Regular:size=5"]
        , bgColor = "#2E3440"
        , fgColor = "#D8DEE9"
        , border           = BottomB
@@ -22,7 +22,7 @@ Config { font = "xft:Fira Code:size=8:bold:antialias=true"
                      , Run Wireless "wlp3s0" ["-t", "<fn=1>wifi</fn> <essid> <fn=1>quality</fn> <qualityvbar>"] 20
                      , Run Memory   [ "--template" ,"<fn=1>RAM</fn> <usedratio>%"] 10
                      , Run Battery        [ "--template" , "<fn=1>Batery</fn> <acstatus>"
-                             , "--Low"      , "10"        -- units: %
+                             , "--Low"      , "30"        -- units: %
                              , "--High"     , "80"        -- units: %
                              , "--low"      , "#BF616A"
                              , "--normal"   , "#ECEFF4"
