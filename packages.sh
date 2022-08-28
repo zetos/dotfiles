@@ -68,14 +68,14 @@ yay -S noto-fonts-emoji --noconfirm
 echo 'Install numlockx'
 yay -S numlockx --noconfirm
 
-# echo 'Install nvidia'
-# yay -S nvidia --noconfirm
+echo 'Install nvidia'
+yay -S nvidia --noconfirm
 
-# echo 'Install nvidia-utils'
-# yay -S nvidia-utils --noconfirm
+echo 'Install nvidia-utils'
+yay -S nvidia-utils --noconfirm
 
-# echo 'Install discord'
-# yay -S discord --noconfirm
+echo 'Install discord'
+yay -S discord --noconfirm
 
 echo 'Install lxappearance'
 yay -S lxappearance --noconfirm
