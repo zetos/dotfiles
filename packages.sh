@@ -1,9 +1,9 @@
 
-echo 'Install chromium'
-yay -S chromium --noconfirm
-
 echo 'Install nvm'
 yay -S nvm --noconfirm
+
+echo 'Install rxvt-unicode'
+yay -S rxvt-unicode --noconfirm
 
 echo 'Install docker & docker-compose'
 yay -S docker docker-compose --noconfirm
@@ -50,8 +50,8 @@ yay -S ttf-iosevka --noconfirm
 echo 'Install noto-fonts-emoji'
 yay -S noto-fonts-emoji --noconfirm
 
-echo 'Install ngrok'
-yay -S ngrok --noconfirm
+# echo 'Install ngrok'
+# yay -S ngrok --noconfirm
 
 echo 'Install nitrogen'
 yay -S nitrogen --noconfirm
@@ -79,3 +79,9 @@ yay -S discord --noconfirm
 
 echo 'Install lxappearance'
 yay -S lxappearance --noconfirm
+
+echo 'Install github-cli'
+yay -S github-cli --noconfirm
+
+echo 'Install google-chrome'
+yay -S google-chrome --noconfirm
