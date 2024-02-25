@@ -11,9 +11,6 @@ yay -S docker docker-compose --noconfirm
 echo 'Install vscode'
 yay -S visual-studio-code-bin --noconfirm
 
-echo 'Install font fira-code'
-yay -S otf-fira-code --noconfirm
-
 echo 'Install openssh'
 yay -S openssh --noconfirm
 
@@ -62,9 +59,6 @@ yay -S nordic-theme --noconfirm
 echo 'Install notepadqq'
 yay -S notepadqq --noconfirm
 
-echo 'Install noto-fonts-emoji'
-yay -S noto-fonts-emoji --noconfirm
-
 echo 'Install numlockx'
 yay -S numlockx --noconfirm
 
@@ -74,8 +68,8 @@ yay -S nvidia --noconfirm
 echo 'Install nvidia-utils'
 yay -S nvidia-utils --noconfirm
 
-echo 'Install discord'
-yay -S discord --noconfirm
+# echo 'Install discord'
+# yay -S discord --noconfirm
 
 echo 'Install lxappearance'
 yay -S lxappearance --noconfirm
