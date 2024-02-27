@@ -5,6 +5,7 @@ import Graphics.X11.ExtraTypes.XF86
 import XMonad.Hooks.DynamicLog
 import XMonad.Layout.Spacing
 import XMonad.Layout.Magnifier
+import XMonad.Layout.Renamed
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -199,7 +200,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList
 myLayout = tiled ||| Mirror tiled ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = magnifiercz' 1.5 $ spacing 3 $ Tall nmaster delta ratio
+     tiled   = renamed [Replace "Tiled"] $ magnifiercz' 1.5 $ spacing 3 $ Tall nmaster delta ratio
 
      -- The default number of windows in the master pane
      nmaster = 1
