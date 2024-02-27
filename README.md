@@ -18,6 +18,14 @@ cabal install --lib xmonad xmonad-contrib
 cabal install xmobar
 ```
 
+or
+
+```sh
+$ cabal update
+$ cabal install --package-env=$HOME/.config/xmonad --lib base xmonad xmonad-contrib
+$ cabal install --package-env=$HOME/.config/xmonad xmonad
+```
+
 make the .xmonad dir into a cabal project.
 
 ```
