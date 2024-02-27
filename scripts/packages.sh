@@ -20,11 +20,8 @@ yay -S vlc --noconfirm
 echo 'Install unzip'
 yay -S unzip --noconfirm
 
-echo 'Install pulsemixer'
-yay -S pulsemixer --noconfirm
-
-echo 'Install pamixer'
-yay -S pamixer --noconfirm
+echo 'Install pulsemixer & pamixer'
+yay -S pulsemixer pamixer --noconfirm
 
 echo 'Install qbittorrent'
 yay -S qbittorrent --noconfirm
@@ -32,20 +29,11 @@ yay -S qbittorrent --noconfirm
 echo 'Install reflector'
 yay -S reflector --noconfirm
 
-echo 'Install obs-studio'
-yay -S obs-studio --noconfirm
+echo 'Install obs-studio & obs-teleport'
+yay -S obs-studio obs-teleport --noconfirm
 
-echo 'Install obs-teleport'
-yay -S obs-teleport --noconfirm
-
-echo 'Install ttf-fira-code'
-yay -S ttf-fira-code --noconfirm
-
-echo 'Install ttf-iosevka'
-yay -S ttf-iosevka --noconfirm
-
-echo 'Install noto-fonts-emoji'
-yay -S noto-fonts-emoji --noconfirm
+echo 'Install fonts'
+yay -S ttf-fira-code ttf-iosevka noto-fonts-emoji --noconfirm
 
 # echo 'Install ngrok'
 # yay -S ngrok --noconfirm
@@ -63,10 +51,7 @@ echo 'Install numlockx'
 yay -S numlockx --noconfirm
 
 echo 'Install nvidia'
-yay -S nvidia --noconfirm
-
-echo 'Install nvidia-utils'
-yay -S nvidia-utils --noconfirm
+yay -S nvidia nvidia-utils --noconfirm
 
 # echo 'Install discord'
 # yay -S discord --noconfirm
