@@ -43,7 +43,7 @@ fi
 #numlockx on &
 #exec xmonad
 
-xrandr -s 1440x900 &
+#xrandr -s 1440x900 &
 nitrogen --restore &
 picom &
 numlockx on &
