@@ -33,7 +33,9 @@ echo 'Install obs-studio & obs-teleport'
 yay -S obs-studio obs-teleport --noconfirm
 
 echo 'Install fonts'
-yay -S ttf-fira-code ttf-iosevka noto-fonts-emoji --noconfirm
+yay -S ttf-fira-code ttf-iosevka --noconfirm
+
+# ttf-iosevka-nerd
 
 # echo 'Install ngrok'
 # yay -S ngrok --noconfirm
@@ -64,3 +66,6 @@ yay -S github-cli --noconfirm
 
 echo 'Install google-chrome'
 yay -S google-chrome --noconfirm
+
+echo 'Install startship'
+yay -S starship
