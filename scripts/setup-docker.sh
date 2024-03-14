@@ -1,6 +1,10 @@
 #!/bin/bash
 
-echo 'Remember to run this script as sudo'
+# Check if the script is run as root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script must be run as root." 
+    exit 1
+fi
 
 # Start Docker service
 systemctl start docker
