@@ -16,7 +16,10 @@ systemctl enable docker
 groupadd docker
 
 # Add user to docker group
-usermod -aG docker $USER
+# usermod -aG docker $USER
+
+gpasswd -a $USER docker
+newgrp docker
 
 # Verify Docker installation
 # docker --version
