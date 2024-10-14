@@ -13,7 +13,7 @@ install_package() {
 
 install_package nvm
 install_package rxvt-unicode
-install_package docker docker-compose
+install_package docker
 install_package visual-studio-code-bin
 install_package openssh
 install_package mpv # vlc
