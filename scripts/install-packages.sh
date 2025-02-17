@@ -12,6 +12,8 @@ install_package() {
 }
 
 install_package nvm
+install_package dmenu
+# install_package xmobar
 install_package rxvt-unicode
 install_package docker
 install_package visual-studio-code-bin
