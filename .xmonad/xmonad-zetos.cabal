@@ -37,7 +37,7 @@ executable xmonad-zetos
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.21.0.0
+    build-depends:    base ^>=4.20.0.0
                     , xmonad >= 0.18
                     , xmonad-contrib >= 0.18
                     , containers >= 0.7
