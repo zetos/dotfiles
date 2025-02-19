@@ -23,7 +23,19 @@ extra-doc-files:    CHANGELOG.md
 common warnings
     ghc-options: -Wall
 
-executable xmonad-zetos
+library
+    hs-source-dirs:     lib
+    build-depends:
+        , base
+        , containers
+        , X11
+        , xmobar
+        , xmonad
+        , xmonad-contrib
+
+    default-language:   GHC2021
+
+executable xmonad
     -- Import common warning flags.
     --import:           warnings
 
@@ -37,11 +49,11 @@ executable xmonad-zetos
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.20.0.0
-                    , xmonad >= 0.18
-                    , xmonad-contrib >= 0.18
-                    , containers >= 0.7
-                    , X11 >= 1.10.3
+    build-depends:    base
+                    , xmonad
+                    , xmonad-contrib
+                    , containers
+                    , X11
 
     -- Base language which the package is written in.
     default-language: GHC2021
