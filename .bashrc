@@ -12,7 +12,8 @@ PS1='[\u@\h \W]\$ '
 export PATH="$PATH:$HOME/.ghcup/bin"
 
 # add cabal binaries to path (xmonad)
-# export PATH="$PATH:$HOME/.cabal/bin"
+# export PATH="$PATH:$HOME/.cabal/bin/xmonad"
+# export PATH="$PATH:$HOME/.config/xmonad"
 export PATH="$PATH:$HOME/.local/bin"
 
 # Init nvm

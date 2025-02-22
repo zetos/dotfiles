@@ -40,3 +40,10 @@ if theres a missing pkg add it by running:
 cabal install --lib X11
 cabal install --lib containers
 ```
+
+## XMobar
+
+```bash
+# cabal list xmobar
+cabal install xmobar-0.48.1 --allow-newer # Risky
+```

@@ -1,14 +1,14 @@
-import XMonad
-import Data.Monoid
-import System.Exit
-import Graphics.X11.ExtraTypes.XF86
-import XMonad.Hooks.DynamicLog
-import XMonad.Layout.Spacing
-import XMonad.Layout.Magnifier
-import XMonad.Layout.Renamed
+import           Data.Monoid
+import           Graphics.X11.ExtraTypes.XF86
+import           System.Exit
+import           XMonad
+import           XMonad.Hooks.DynamicLog
+import           XMonad.Layout.Magnifier
+import           XMonad.Layout.Renamed
+import           XMonad.Layout.Spacing
 
-import qualified XMonad.StackSet as W
-import qualified Data.Map        as M
+import qualified Data.Map                     as M
+import qualified XMonad.StackSet              as W
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -264,7 +264,7 @@ myStartupHook = return ()
 
 ------------------------------------------------------------------------
 -- Launch the bar.
-myBar= "xmobar"
+myBar= "xmobar ~/.config/xmonad/xmobar.hs"
 
 -- CustomPP, it determines what it being written in the bar.
 myPP = xmobarPP { ppCurrent = xmobarColor nord4 nord2 . wrap "[" "]"

@@ -7,8 +7,8 @@ Config { font = "xft:Iosevka:size=7:bold:antialias=true"
        , borderColor      = "#5E81AC"
        , position = Top
        , lowerOnStart = True
-       , commands = [ 
-                     Run Date "%A, %d %b %Y <fc=#81A1C1>%H:%M:%S</fc>" "date" 10
+       , commands = [
+                     Run Date "%A, %d %b %Y <fc=#81A1C1>%H:%M:%S</fc>" "date" 3
                      , Run Kbd      [ ("br", "BR"), ("us", "<fc=#EBCB8B>US</fc>")]
                      , Run MultiCpu [ "--template" , "<fn=1>CPU </fn><total>%"
                                                 , "--Low"      , "50"        -- units: %
@@ -17,10 +17,10 @@ Config { font = "xft:Iosevka:size=7:bold:antialias=true"
                                                 , "--normal"   , "#ECEFF4"
                                                 , "--high"     , "#BF616A"
                                                 ] 10
-                     , Run Network "enp0s3" ["-t", "<fn=1>down</fn> <rx>kb <fn=1>up</fn> <tx>kb"] 20
-                     , Run Memory   [ "--template" ,"<fn=1>RAM </fn><usedratio>%"] 10
+                     , Run Network "enp0s3" ["-t", "<fn=1>down</fn> <rx>kb <fn=1>up</fn> <tx>kb"] 10
+                     , Run Memory   [ "--template" ,"<fn=1>RAM </fn><usedratio>%"] 5
                      -- , Run Com "/bin/bash" ["-c", "XMgetvolume"]  "XVol" 10
-                     , Run Com "pamixer" ["--get-volume"]  "vol" 20
+                     , Run Com "pamixer" ["--get-volume"]  "vol" 10
                      , Run StdinReader
                     ]
        , sepChar = "%"
