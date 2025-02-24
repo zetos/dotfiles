@@ -1,5 +1,5 @@
-Config { font = "xft:Iosevka:size=7:bold:antialias=true"
-       , additionalFonts = ["xft:Iosevka :style=Regular:size=5"]
+Config { font = "Iosevka 9"
+       , additionalFonts = ["Iosevka Extrabold 10"]
        , bgColor = "#2E3440"
        , fgColor = "#D8DEE9"
        , border           = BottomB
