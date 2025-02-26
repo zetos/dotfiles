@@ -13,17 +13,16 @@ install_package() {
 
 install_package nvm
 install_package dmenu
-# install_package xmobar
 install_package rxvt-unicode
 install_package docker
 install_package visual-studio-code-bin
 install_package openssh
-install_package mpv # vlc
+install_package mpv # vlc like
 install_package unzip
 install_package pulsemixer pamixer
 install_package qbittorrent
 install_package reflector
-install_package ttf-iosevka # ttf-iosevka-nerd
+install_package ttf-iosevka-nerd
 install_package nitrogen
 install_package nordic-theme
 install_package notepadqq

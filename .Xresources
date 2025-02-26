@@ -1,7 +1,7 @@
 !--- Xterm Settings ---
 XTerm.termName: xterm-256color
 
-XTerm*faceName: Iosevka
+XTerm*faceName: Iosevka Nerd Font Mono
 XTerm*faceSize: 10
 XTerm*renderFont: true
 
@@ -11,11 +11,11 @@ URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.iso14755: false
 URxvt.iso14755_52: false
-URxvt.font: xft:Iosevka:size=8
+URxvt.font: xft:Iosevka Nerd Font Mono:size=9:style=Bold
 URxvt.scrollBar: false
 *.internalBorder: 10
 
-!--- Transparent ---
+!--- Transparency ---
 
 !URxvt*transparent: true
 !shading: 0 to 99 darkens, 101 to 200 lightens
