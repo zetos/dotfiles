@@ -229,7 +229,7 @@ myLayout = tiled ||| Mirror tiled ||| Full
 myManageHook = composeAll
     [ className =? "notepadqq"        --> doFloat
     , className =? "Gimp"           --> doFloat
-    , className =? "nitrogen"           --> doFloat
+    , className =? "Nitrogen"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
