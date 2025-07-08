@@ -17,7 +17,7 @@ Config { font = "Iosevka 9"
                                                 , "--normal"   , "#ECEFF4"
                                                 , "--high"     , "#BF616A"
                                                 ] 10
-                     , Run Network "enp0s3" ["-t", "<fn=1>down</fn> <rx>kb <fn=1>up</fn> <tx>kb"] 10
+                     , Run Network "enp0s3" ["-t", "<fn=1>down</fn> <rx>kb <fn=1>up</fn> <tx>kb"] 10 -- Check your network interface with: ip link show
                      , Run Memory   [ "--template" ,"<fn=1>RAM </fn><usedratio>%"] 5
                      -- , Run Com "/bin/bash" ["-c", "XMgetvolume"]  "XVol" 10
                      , Run Com "pamixer" ["--get-volume"]  "vol" 10
