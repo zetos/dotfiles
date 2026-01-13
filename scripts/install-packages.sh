@@ -27,7 +27,10 @@ install_package nitrogen
 install_package nordic-theme
 install_package notepadqq
 install_package numlockx
-install_package nvidia nvidia-utils
+# NVIDIA legacy 470xx driver (DKMS for kernel compatibility). Run fix-nvidia.sh after install.
+# This legacy branch is required for older GPUs not supported by latest drivers.
+# If you upgrade your GPU, change to: nvidia-dkms nvidia-utils (or nvidia nvidia-utils)
+install_package nvidia-470xx-dkms nvidia-470xx-utils
 install_package lxappearance
 install_package github-cli
 install_package google-chrome
