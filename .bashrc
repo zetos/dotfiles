@@ -8,9 +8,9 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-# GHCup tools and Cabal-installed executables. Cabal may use either executable
-# directory depending on its configuration.
-export PATH="$HOME/.ghcup/bin:$HOME/.cabal/bin:$HOME/.local/bin:$PATH"
+# GHCup tools, Cabal-installed executables, local tools, and Bun. Cabal may use
+# either executable directory depending on its configuration.
+export PATH="$HOME/.ghcup/bin:$HOME/.cabal/bin:$HOME/.local/bin:$HOME/.bun/bin:$PATH"
 
 # Init nvm
 source /usr/share/nvm/init-nvm.sh
