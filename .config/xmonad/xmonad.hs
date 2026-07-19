@@ -16,7 +16,7 @@ import XMonad.Util.SpawnOnce (spawnOnce)
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal = "urxvt"
+myTerminal = "alacritty" -- old: "urxvt"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool

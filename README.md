@@ -1,8 +1,8 @@
 # Dotfiles
 
 Personal dotfiles for an Arch Linux desktop running X11, XMonad, and Xmobar.
-The repository also contains Bash, Xresources, Starship, Stalonetray, package
-installation, and machine-specific system configuration.
+The repository also contains Alacritty, Bash, Xresources, Starship, Stalonetray,
+package installation, and machine-specific system configuration.
 
 These files reflect one workstation rather than a portable distribution. Review
 network interfaces, keyboard layouts, drivers, monitor settings, and system paths before using them on another machine.
@@ -59,13 +59,16 @@ if a destination is still present.
 From the repository root:
 
 ```bash
-mkdir -p ~/.config/xmonad ~/.Xresources.d
+mkdir -p ~/.config/alacritty/themes ~/.config/xmonad ~/.Xresources.d
 
 ln -s "$PWD/.bashrc" ~/.bashrc
 ln -s "$PWD/.xinitrc" ~/.xinitrc
 ln -s "$PWD/.Xresources" ~/.Xresources
 ln -s "$PWD/.Xresources.d/nord" ~/.Xresources.d/nord
 ln -s "$PWD/.Xresources.d/night-owl" ~/.Xresources.d/night-owl
+ln -s "$PWD/.config/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
+ln -s "$PWD/.config/alacritty/themes/nord.toml" ~/.config/alacritty/themes/nord.toml
+ln -s "$PWD/.config/alacritty/themes/night-owl.toml" ~/.config/alacritty/themes/night-owl.toml
 ln -s "$PWD/.config/starship.toml" ~/.config/starship.toml
 ln -s "$PWD/.config/stalonetrayrc" ~/.config/stalonetrayrc
 ln -s "$PWD/.config/xmonad/xmonad.hs" ~/.config/xmonad/xmonad.hs
@@ -173,9 +176,10 @@ xmonad --recompile && xmonad --restart
 
 ## Themes
 
-Nord is the default theme. Night Owl is also available for XMonad, Xmobar,
-Stalonetray, and Xresources. The repository files must be linked to the matching
-paths under `$HOME` before running reload commands.
+Nord is the default for XMonad, Xmobar, Stalonetray, and Xresources; Night Owl
+is also available. Alacritty keeps its existing default colors unless one of
+those palettes is selected separately. The repository files must be linked to
+the matching paths under `$HOME` before running reload commands.
 
 To select a theme:
 
@@ -197,6 +201,33 @@ The theme files are:
 - Night Owl Xmobar: `.config/xmonad/xmobar-night-owl.hs`
 - Nord Xresources: `.Xresources.d/nord`
 - Night Owl Xresources: `.Xresources.d/night-owl`
+
+### Alacritty
+
+Alacritty keeps `window.opacity = 0.3` in its base configuration, so its default
+colors, Nord, and Night Owl all use the same transparency. The default colors
+remain active while both imports at the top of
+`.config/alacritty/alacritty.toml` are commented.
+
+To select Nord or Night Owl, uncomment exactly one of these imports:
+
+```toml
+[general]
+import = ["~/.config/alacritty/themes/nord.toml"]
+```
+
+```toml
+[general]
+import = ["~/.config/alacritty/themes/night-owl.toml"]
+```
+
+Comment the import again to return to Alacritty's default colors. Alacritty
+reloads configuration changes automatically.
+
+The Alacritty theme files are:
+
+- Nord: `.config/alacritty/themes/nord.toml`
+- Night Owl: `.config/alacritty/themes/night-owl.toml`
 
 ## Machine-Specific Setup
 
