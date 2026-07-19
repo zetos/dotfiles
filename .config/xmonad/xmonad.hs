@@ -1,14 +1,18 @@
 import           Data.Monoid
 import           Graphics.X11.ExtraTypes.XF86
+import           Graphics.X11.Xlib.Extras      (getWindowProperty8)
 import           System.Exit
 import           XMonad
 import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.StatusBar        (xmonadPropLog')
 import           XMonad.Layout.Magnifier
 import           XMonad.Layout.Renamed
 import           XMonad.Layout.Spacing
+import           XMonad.Util.SpawnOnce         (spawnOnce)
 
 import qualified Data.Map                     as M
 import qualified XMonad.StackSet              as W
+import qualified XMonad.Util.Hacks             as Hacks
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -45,32 +49,31 @@ myModMask       = mod1Mask
 --
 myWorkspaces    = ["1:www", "2:code", "3:term", "4:etc"]
 
--- Colors
+-- Theme
 --
-sexyPurple = "#a046e3"
-bloodRed = "#8a0303"
-neonGreen= "#39ff14"
+type ThemeColor = String
 
-nord0 = "#2E3440"
-nord1 = "#3B4252"
-nord2 = "#434C5E"
-nord3 = "#4C566A"
+data Theme = Theme
+    { themeBackground :: ThemeColor
+    , themeSurface    :: ThemeColor
+    , themeForeground :: ThemeColor
+    , themeMuted      :: ThemeColor
+    , themeAccent     :: ThemeColor
+    , themeUrgent     :: ThemeColor
+    }
 
-nord4 = "#D8DEE9"
-nord5 = "#E5E9F0"
-nord6 = "#ECEFF4"
+nordTheme :: Theme
+nordTheme = Theme
+    { themeBackground = "#2E3440"
+    , themeSurface    = "#434C5E"
+    , themeForeground = "#D8DEE9"
+    , themeMuted      = "#4C566A"
+    , themeAccent     = "#5E81AC"
+    , themeUrgent     = "#BF616A"
+    }
 
-nord9 = "#81A1C1"
-nord10 = "#5E81AC"
-
-nord11 = "#BF616A"
-nord13 ="#EBCB8B"
-
-
--- Border colors for unfocused and focused windows, respectively.
---
-myNormalBorderColor  = nord0
-myFocusedBorderColor = nord10
+myTheme :: Theme
+myTheme = nordTheme
 
 
 ------------------------------------------------------------------------
@@ -86,6 +89,9 @@ myKeys conf@XConfig {XMonad.modMask = modm} = M.fromList $
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
+
+    -- take screenshot
+    , ((0, xK_Print), spawn "gnome-screenshot --interactive")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -200,7 +206,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList
 myLayout = tiled ||| Mirror tiled ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = renamed [Replace "Tiled"] $ magnifiercz' 1.5 $ spacing 8 $ Tall nmaster delta ratio
+     tiled   = renamed [Replace "Tiled"] $ magnifiercz' 1.3 $ spacing 8 $ Tall nmaster delta ratio
 
      -- The default number of windows in the master pane
      nmaster = 1
@@ -242,7 +248,13 @@ myManageHook = composeAll
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
-myEventHook = mempty
+myEventHook =
+    Hacks.trayPaddingXmobarEventHook
+        (className =? "stalonetray")
+        "_XMONAD_TRAYPAD"
+    <> Hacks.trayAbovePanelEventHook
+        (className =? "stalonetray")
+        (appName =? "xmobar")
 
 ------------------------------------------------------------------------
 -- Status bars and logging
@@ -260,19 +272,27 @@ myLogHook = return ()
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = return ()
+myStartupHook = do
+    root <- asks theRoot
+    trayPad <- withDisplay $ \display -> do
+        atom <- getAtom "_XMONAD_TRAYPAD"
+        io $ getWindowProperty8 display atom root
+    case trayPad of
+        Nothing -> xmonadPropLog' "_XMONAD_TRAYPAD" "<hspace=17/>"
+        Just _  -> return ()
+    spawnOnce "stalonetray --config ~/.config/stalonetrayrc"
 
 ------------------------------------------------------------------------
 -- Launch the bar.
 myBar= "xmobar ~/.config/xmonad/xmobar.hs"
 
 -- CustomPP, it determines what it being written in the bar.
-myPP = xmobarPP { ppCurrent = xmobarColor nord4 nord2 . wrap "[" "]"
-                , ppTitle = shorten 60
-                , ppSep = "<fc=#4C566A> | </fc>"
-                , ppHiddenNoWindows = xmobarColor nord10 ""
-                , ppUrgent = xmobarColor nord11 "" . wrap "!" ""
-                 }
+myPP = xmobarPP { ppCurrent = xmobarColor (themeForeground myTheme) (themeSurface myTheme) . wrap "[" "]"
+                 , ppTitle = shorten 60
+                 , ppSep = xmobarColor (themeMuted myTheme) "" " | "
+                 , ppHiddenNoWindows = xmobarColor (themeAccent myTheme) ""
+                 , ppUrgent = xmobarColor (themeUrgent myTheme) "" . wrap "!" ""
+                  }
 
 -- Toggle the gap for the bar.
 toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
@@ -300,8 +320,8 @@ defaults = def {
         borderWidth        = myBorderWidth,
         modMask            = myModMask,
         workspaces         = myWorkspaces,
-        normalBorderColor  = myNormalBorderColor,
-        focusedBorderColor = myFocusedBorderColor,
+        normalBorderColor  = themeBackground myTheme,
+        focusedBorderColor = themeAccent myTheme,
 
       -- key bindings
         keys               = myKeys,

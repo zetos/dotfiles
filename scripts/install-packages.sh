@@ -39,6 +39,7 @@ install_package github-cli
 install_package google-chrome
 install_package starship
 install_package xclip
+install_package gnome-screenshot
 
 # Install obs-studio and obs-teleport together
 install_package obs-studio obs-teleport
