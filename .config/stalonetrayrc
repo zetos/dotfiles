@@ -12,6 +12,7 @@
 # background <color>         # color can be specified as an HTML hex triplet or
                              # as a name from rgb.txt, note that '#' must be
                              # quoted
+# Nord fallback; XMonad overrides this with the selected theme background.
 background "#2E3440"
 
 # decorations <decspec>      # set trays window decorations; possible values for

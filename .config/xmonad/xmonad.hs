@@ -60,6 +60,7 @@ data Theme = Theme
     , themeMuted      :: ThemeColor
     , themeAccent     :: ThemeColor
     , themeUrgent     :: ThemeColor
+    , themeXmobar     :: String
     }
 
 nordTheme :: Theme
@@ -70,8 +71,21 @@ nordTheme = Theme
     , themeMuted      = "#4C566A"
     , themeAccent     = "#5E81AC"
     , themeUrgent     = "#BF616A"
+    , themeXmobar     = "~/.config/xmonad/xmobar.hs"
     }
 
+nightOwlTheme :: Theme
+nightOwlTheme = Theme
+    { themeBackground = "#011627"
+    , themeSurface    = "#d6deeb"
+    , themeForeground = "#000c1d"
+    , themeMuted      = "#c792ea"
+    , themeAccent     = "#82aaff"
+    , themeUrgent     = "#ffeb95"
+    , themeXmobar     = "~/.config/xmonad/xmobar-night-owl.hs"
+    }
+
+-- Select nordTheme or nightOwlTheme. Nord is the default.
 myTheme :: Theme
 myTheme = nordTheme
 
@@ -280,11 +294,11 @@ myStartupHook = do
     case trayPad of
         Nothing -> xmonadPropLog' "_XMONAD_TRAYPAD" "<hspace=17/>"
         Just _  -> return ()
-    spawnOnce "stalonetray --config ~/.config/stalonetrayrc"
+    spawnOnce $ "stalonetray --config ~/.config/stalonetrayrc --background \"" ++ themeBackground myTheme ++ "\""
 
 ------------------------------------------------------------------------
 -- Launch the bar.
-myBar= "xmobar ~/.config/xmonad/xmobar.hs"
+myBar = "xmobar " ++ themeXmobar myTheme
 
 -- CustomPP, it determines what it being written in the bar.
 myPP = xmobarPP { ppCurrent = xmobarColor (themeForeground myTheme) (themeSurface myTheme) . wrap "[" "]"

@@ -81,3 +81,28 @@ xmonad --restart
 # cabal list xmobar
 cabal install xmobar-0.48.1 --allow-newer # Risky
 ```
+
+## Themes
+
+Nord is the default theme. Night Owl is also available for XMonad, xmobar,
+stalonetray, and Xresources. These repository files are not automatically
+linked to the files used by the current X session; deploy them to the matching
+paths under `$HOME` before running reload commands.
+
+To select a theme:
+
+1. Set `myTheme` in `.config/xmonad/xmonad.hs` to either `nordTheme` or
+   `nightOwlTheme`. This also selects the matching xmobar configuration and
+   stalonetray background.
+2. Enable the matching `#include` near the end of `.Xresources` and comment out
+   the other include.
+3. After deploying the files, start a new X session. This reloads Xresources
+   and replaces the existing stalonetray process. For XMonad-only changes, use
+   `xmonad --recompile` followed by `xmonad --restart` after deployment.
+
+The theme files are:
+
+- Nord xmobar: `.config/xmonad/xmobar.hs`
+- Night Owl xmobar: `.config/xmonad/xmobar-night-owl.hs`
+- Nord Xresources: `.Xresources.d/nord`
+- Night Owl Xresources: `.Xresources.d/night-owl`
