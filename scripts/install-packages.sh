@@ -11,6 +11,9 @@ install_package() {
     esac
 }
 
+install_package man-db man-pages
+install_package stalonetray
+install_package alacritty
 install_package nvm
 install_package dmenu
 install_package rxvt-unicode
