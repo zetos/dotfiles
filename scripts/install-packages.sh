@@ -12,6 +12,7 @@ install_package() {
 }
 
 install_package man-db man-pages
+install_package bash-completion
 install_package stalonetray
 install_package alacritty
 install_package nvm
@@ -27,6 +28,7 @@ install_package qbittorrent
 install_package reflector
 install_package ttf-iosevka-nerd
 install_package nitrogen
+install_package picom
 install_package nordic-theme
 install_package notepadqq
 install_package numlockx

@@ -8,16 +8,25 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-# add ghcup binaries to path (cabal, stack, etc)
-export PATH="$PATH:$HOME/.ghcup/bin"
-
-# add cabal binaries to path (xmonad)
-# export PATH="$PATH:$HOME/.cabal/bin/xmonad"
-# export PATH="$PATH:$HOME/.config/xmonad"
-export PATH="$PATH:$HOME/.local/bin"
+# GHCup tools and Cabal-installed executables. Cabal may use either executable
+# directory depending on its configuration.
+export PATH="$HOME/.ghcup/bin:$HOME/.cabal/bin:$HOME/.local/bin:$PATH"
 
 # Init nvm
 source /usr/share/nvm/init-nvm.sh
 
 # Init Starship
 eval "$(starship init bash)"
+
+# Bash Completion
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
